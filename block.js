@@ -10,6 +10,8 @@ let buttonSecondary = document.querySelector(".btn-secondary");
 let buttonSubmit = document.querySelector(".btn-submit");
 let titleInput = document.querySelector(".input-title");
 let inputCardText = document.querySelector(".input-text");
+let someDiv = document.querySelector(".somediv")
+// let divinity = document.querySelector(".divinity ")
 // пишем функции
 let cardData = {};
 function GetNewCard(someCard, titleText, cardTextInput) {
@@ -19,9 +21,15 @@ function GetNewCard(someCard, titleText, cardTextInput) {
   this.cardText = this.card.querySelector(".card-text"); //стягиваеи основной текст склонированного обьекта
   this.cardText.textContent = cardTextInput.value; // меняем текст тайтла склонированного обьекта
   this.title.textContent = titleText.value; // меняем текст основной карточки
-  body.append(this.card); //импортируем созданную карточку в body
+  someDiv.append(this.card); //импортируем созданную карточку в body
+  save_element()
 }
 
+
+function save_element(){
+  const parsed = someDiv.innerHTML;
+  localStorage.setItem('hiDen', parsed);
+}
 openModal = (modalName) => {
   //октрытие модального окна
   modalName.style.display = "block";
@@ -49,3 +57,15 @@ modal.addEventListener("click", (element) => {
     closeModal(modal);
   }
 });
+
+function delElement(){
+
+}
+function get_element() {
+ someDiv.innerHTML = localStorage.getItem('hiDen');
+}
+get_element()
+// let sa = []
+// let ss = localStorage.getItem('hiDen');
+// ss.split('')
+// console.log(ss);
